@@ -12,16 +12,22 @@ public class GameControllerUI : MonoBehaviour
     [SerializeField]
     private GameObject m_InGameMenuCanvas;
 
-    private GameObject m_CurrentCanvas;
+    public GameObject m_CurrentCanvas;
 
     [SerializeField]
     private GameObject m_PuzzleResultLibrary = null;
+    [SerializeField]
+    private GameObject m_PuzzleLibrary = null;
 
     [SerializeField]
     private GameObject m_PuzzleResultArmory;
+    [SerializeField]
+    private GameObject m_PuzzleArmory;
 
     [SerializeField]
     private GameObject m_PuzzleResultCentreSala;
+    [SerializeField]
+    private GameObject m_PuzzleCentreSala;
 
     private UnityEngine.Events.UnityAction m_ReturnToMainMenuUnityAction;
 
@@ -44,7 +50,6 @@ public class GameControllerUI : MonoBehaviour
     public void ReturnToMainMenu()
     {
         m_CurrentCanvas.SetActive(false);
-        m_CurrentCanvas.SetActive(true);
 
     }
 
@@ -86,7 +91,7 @@ public class GameControllerUI : MonoBehaviour
 
     public void ChangeToPaintingMinigame()
     {
-
+        SetCurrentCanvas(m_PuzzleCentreSala);
     }
 
     public void ChangeToBookMinigame()
@@ -97,7 +102,7 @@ public class GameControllerUI : MonoBehaviour
     public void ChangeToSwordMinigame()
     {
         m_GameController.ResetSwordRotation();
-        SetCurrentCanvas(m_PuzzleResultArmory);
+        SetCurrentCanvas(m_PuzzleArmory);
     }
 
     // Start && Update

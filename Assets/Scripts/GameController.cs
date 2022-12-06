@@ -5,6 +5,8 @@ using UnityEngine.UI;
 
 public class GameController : MonoBehaviour
 {
+    public static GameController m_Instance;
+
     [SerializeField]
     GameControllerUI m_GameControllerUI;
 
@@ -32,6 +34,12 @@ public class GameController : MonoBehaviour
 
     [SerializeField]
     private List<int> m_PuzzleSwordCompleted;
+
+    private void Awake()
+    {
+        if(m_Instance==null)
+            m_Instance=this;
+    }
 
     // Getters and Setters
     public bool GetGameWellDone()
@@ -71,6 +79,7 @@ public class GameController : MonoBehaviour
     public void ActivatePlayerMovement(bool activate)
     {
         m_PlayerMovement.enabled = activate;
+        Debug.Log("xd");
     }
 
     public void ResetSwordRotation()

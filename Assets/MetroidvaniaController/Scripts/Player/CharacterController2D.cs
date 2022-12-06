@@ -249,8 +249,11 @@ public class CharacterController2D : MonoBehaviour
 		}
 	}
 
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+    }
 
-	private void Flip()
+    private void Flip()
 	{
 		// Switch the way the player is labelled as facing.
 		m_FacingRight = !m_FacingRight;
