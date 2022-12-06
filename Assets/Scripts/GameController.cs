@@ -79,7 +79,6 @@ public class GameController : MonoBehaviour
     public void ActivatePlayerMovement(bool activate)
     {
         m_PlayerMovement.enabled = activate;
-        Debug.Log("xd");
     }
 
     public void ResetSwordRotation()

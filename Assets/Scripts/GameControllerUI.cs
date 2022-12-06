@@ -28,6 +28,8 @@ public class GameControllerUI : MonoBehaviour
     private GameObject m_PuzzleResultCentreSala;
     [SerializeField]
     private GameObject m_PuzzleCentreSala;
+    [SerializeField]
+    private GameObject m_PuzzleCentreSalaFinishedText;
 
     private UnityEngine.Events.UnityAction m_ReturnToMainMenuUnityAction;
 
@@ -50,7 +52,6 @@ public class GameControllerUI : MonoBehaviour
     public void ReturnToMainMenu()
     {
         m_CurrentCanvas.SetActive(false);
-
     }
 
     public void ShowGameWellDone(bool Result)
@@ -60,8 +61,9 @@ public class GameControllerUI : MonoBehaviour
             case "CentreSala":
                 m_PuzzleResultCentreSala.SetActive(true);
                 ChangeTextOnResult(m_PuzzleResultCentreSala, Result);
+                if(Result)
+                    m_PuzzleCentreSalaFinishedText.SetActive(true);
                 m_GameController.Reset();
-
                 break;
             case "Llibreria":
                 m_PuzzleResultLibrary.SetActive(true);
