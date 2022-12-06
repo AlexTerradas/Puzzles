@@ -78,7 +78,10 @@ public class GameController : MonoBehaviour
 
     public void ActivatePlayerMovement(bool activate)
     {
-        m_PlayerMovement.enabled = activate;
+        m_PlayerMovement.horizontalMove=0.0f;
+        m_PlayerMovement.controller.m_Rigidbody2D.velocity=Vector2.zero;
+        m_PlayerMovement.animator.SetFloat("Speed", 0.0f);
+        m_PlayerMovement.enabled=activate;
     }
 
     public void ResetSwordRotation()
