@@ -23,6 +23,13 @@ public class GameController : MonoBehaviour
     [SerializeField]
     private List<int> m_PaintingOrderResult = new List<int> { 1, 3, 4, 2 };
 
+    [Header("Logic Paintings")]
+    [SerializeField]
+    private List<int> m_BooksOrder;
+
+    [SerializeField]
+    private List<int> m_BooksOrderResult = new List<int> { 5, 1, 4, 2 };
+
     [Header("Logic Library")]
     [SerializeField]
     private InputFieldScript m_InputFields; 
@@ -57,6 +64,13 @@ public class GameController : MonoBehaviour
                 m_PaintingOrder.Add(NumberOfPainting);
     }
 
+    public void AddBook(int NumberOfPainting)
+    {
+        if (m_BooksOrder.Count < m_BooksOrderResult.Count)
+            if (!m_BooksOrder.Contains(NumberOfPainting))
+                m_BooksOrder.Add(NumberOfPainting);
+    }
+
     public bool CheckArraysGameSalaPrincipal()
     {
         bool l_Result = false;
@@ -72,10 +86,26 @@ public class GameController : MonoBehaviour
         return l_Result;
     }
 
+    public bool CheckArraysGameLlibreria()
+    {
+        bool l_Result = false;
+
+        for (int i = 0; i < m_BooksOrderResult.Count; ++i)
+        {
+            if (m_BooksOrder[i] != m_BooksOrderResult[i])
+                l_Result = false;
+            else
+                l_Result = true;
+        }
+
+        return l_Result;
+    }
+
     public void Reset()
     {
         m_GameWellDone = false;
         m_PaintingOrder = new List<int>();
+        m_BooksOrder = new List<int>();
     }
 
     public void ActivatePlayerMovement(bool activate)
@@ -103,6 +133,7 @@ public class GameController : MonoBehaviour
     {
         m_GameWellDone = false;
         m_PaintingOrder = new List<int>();
+        m_BooksOrder = new List<int>();
         m_PuzzleSwordCompleted = new List<int>();
         m_PuzzleSwordStart = new List<int>();
     }
@@ -131,8 +162,20 @@ public class GameController : MonoBehaviour
                 case "Llibreria":
                     if(m_InputFields.GetWordsObtained()&&!m_InputFields.GetBeaten())
                     {
+                        m_GameControllerUI.SetWordsMinigame(true);
                         m_InputFields.SetBeaten(true);
                         m_GameControllerUI.ShowGameWellDone(true);
+                    }
+                    if (m_BooksOrder.Count == m_BooksOrderResult.Count)
+                    {
+                        m_GameControllerUI.SetWordsMinigame(false);
+                        if (CheckArraysGameLlibreria())
+                            m_GameControllerUI.ShowGameWellDone(true);
+                        else
+                        {
+                            m_GameControllerUI.ShowGameWellDone(false);
+                            Reset();
+                        }
                     }
                     break;
                 case "Armeria":

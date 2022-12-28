@@ -15,9 +15,11 @@ public class GameControllerUI : MonoBehaviour
     public GameObject m_CurrentCanvas;
 
     [SerializeField]
-    private GameObject m_PuzzleResultLibrary = null;
+    private GameObject m_PuzzleResultLibrary1;
     [SerializeField]
-    private GameObject m_PuzzleLibrary = null;
+    private GameObject m_PuzzleResultLibrary2;
+    [SerializeField]
+    private GameObject m_PuzzleLibrary;
     [SerializeField]
     private InputFieldScript m_InputFields;
 
@@ -33,6 +35,8 @@ public class GameControllerUI : MonoBehaviour
     [SerializeField]
     private GameObject m_PuzzleCentreSalaFinishedText;
 
+    private bool m_WordsMinigame;
+
     private UnityEngine.Events.UnityAction m_ReturnToMainMenuUnityAction;
 
     // Setters and Getters
@@ -47,6 +51,11 @@ public class GameControllerUI : MonoBehaviour
     public GameObject GetInGameMenuCanvas()
     {
         return m_InGameMenuCanvas;
+    }
+
+    public void SetWordsMinigame(bool Minigame)
+    {
+        m_WordsMinigame = Minigame;
     }
 
     // Custom
@@ -68,9 +77,18 @@ public class GameControllerUI : MonoBehaviour
                 m_GameController.Reset();
                 break;
             case "Llibreria":
-                m_PuzzleResultLibrary.SetActive(true);
-                ChangeTextOnResult(m_PuzzleResultLibrary, Result, false);
-                m_InputFields.Reset();
+                if (m_WordsMinigame)
+                {
+                    m_PuzzleResultLibrary1.SetActive(true);
+                    ChangeTextOnResult(m_PuzzleResultLibrary1, Result, false);
+                    m_InputFields.Reset();
+                }
+                else
+                {
+                    m_PuzzleResultLibrary2.SetActive(true);
+                    ChangeTextOnResult(m_PuzzleResultLibrary2, Result, true);
+                    m_GameController.Reset();
+                }
                 break;
             case "Armeria":
                 break;
