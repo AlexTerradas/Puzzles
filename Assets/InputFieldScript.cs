@@ -20,11 +20,12 @@ public class InputFieldScript : MonoBehaviour
     bool m_CorrectWord4=false;
 
     bool m_WordsObtained=false;
+    bool m_Beaten = false;
 
     // Update is called once per frame
     void Update()
     {
-        if(m_InputField1.textComponent.text.ToLower()=="poetica")
+        if(m_InputField1.textComponent.text.ToLower()=="a")
         {
             m_InputField1.textComponent.color = Color.green;
             m_CorrectWord1=true;
@@ -34,7 +35,7 @@ public class InputFieldScript : MonoBehaviour
             m_InputField1.textComponent.color = Color.red;
             m_CorrectWord1=false;
         }
-        if(m_InputField2.textComponent.text.ToLower()=="violetes")
+        if(m_InputField2.textComponent.text.ToLower()=="a")
         {
             m_InputField2.textComponent.color = Color.green;
             m_CorrectWord2 = true;
@@ -44,7 +45,7 @@ public class InputFieldScript : MonoBehaviour
             m_InputField2.textComponent.color = Color.red;
             m_CorrectWord2 = false;
         }
-        if (m_InputField3.textComponent.text.ToLower() == "centum")
+        if (m_InputField3.textComponent.text.ToLower() == "a")
         {
             m_InputField3.textComponent.color = Color.green;
             m_CorrectWord3 = true;
@@ -54,7 +55,7 @@ public class InputFieldScript : MonoBehaviour
             m_InputField3.textComponent.color = Color.red;
             m_CorrectWord3 = false;
         }
-        if (m_InputField4.textComponent.text.ToLower() == "sanctus")
+        if (m_InputField4.textComponent.text.ToLower() == "a")
         {
             m_InputField4.textComponent.color = Color.green;
             m_CorrectWord4 = true;
@@ -74,5 +75,25 @@ public class InputFieldScript : MonoBehaviour
     public bool GetWordsObtained()
     {
         return m_WordsObtained;
+    }
+    public bool GetBeaten()
+    {
+        return m_Beaten;
+    }
+    public void SetBeaten(bool Bool)
+    {
+        m_Beaten = Bool;
+    }
+    public void Reset()
+    {
+        m_InputField1.textComponent.text="";
+        m_InputField2.textComponent.text="";
+        m_InputField3.textComponent.text="";
+        m_InputField4.textComponent.text="";
+        m_CorrectWord1 = false;
+        m_CorrectWord2 = false;
+        m_CorrectWord3 = false;
+        m_CorrectWord4 = false;
+        m_WordsObtained = false;
     }
 }

@@ -16500,6 +16500,7 @@ MonoBehaviour:
   m_CurrentCanvas: {fileID: 0}
   m_PuzzleResultLibrary: {fileID: 1577875319}
   m_PuzzleLibrary: {fileID: 921278146}
+  m_InputFields: {fileID: 881384583}
   m_PuzzleResultArmory: {fileID: 1962478367}
   m_PuzzleArmory: {fileID: 1198752854}
   m_PuzzleResultCentreSala: {fileID: 810426118}
@@ -17213,7 +17214,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1120316687}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 0.26, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 468712581}
@@ -17227,7 +17228,7 @@ TextMesh:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1120316687}
-  m_Text: "NECESSITES \nLA CLAU"
+  m_Text: "NECESSITES \nDESBLOQUEJAR\nLA PORTA"
   m_OffsetZ: 0
   m_CharacterSize: 0.33
   m_LineSpacing: 1
@@ -21421,7 +21422,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1411013906}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 0.25, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 400955301}
@@ -21435,7 +21436,11 @@ TextMesh:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1411013906}
-  m_Text: "ACONSEGUEIXES LA \nCLAU"
+  m_Text: 'DESBLOQUEGES LA
+
+    PORTA DE LA SALA
+
+    DE BALL'
   m_OffsetZ: 0
   m_CharacterSize: 0.33
   m_LineSpacing: 1
@@ -23993,18 +23998,6 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 205597683}
-        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
-        m_MethodName: SetActive
-        m_Mode: 6
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 1
-        m_CallState: 2
       - m_Target: {fileID: 1577875319}
         m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
         m_MethodName: SetActive
@@ -24016,6 +24009,18 @@ MonoBehaviour:
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 205597683}
+        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+        m_MethodName: SetActive
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 1
         m_CallState: 2
 --- !u!114 &1577875322
 MonoBehaviour:
@@ -28815,9 +28820,9 @@ TextMesh:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1854670416}
-  m_Text: 'ET FOLLES A LA
+  m_Text: 'ENTRES A LA SALA
 
-    MARE DEL TOSTADAS'
+    DE BALL. FI PUZLE 1 '
   m_OffsetZ: 0
   m_CharacterSize: 0.33
   m_LineSpacing: 1

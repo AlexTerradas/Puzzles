@@ -18,6 +18,8 @@ public class GameControllerUI : MonoBehaviour
     private GameObject m_PuzzleResultLibrary = null;
     [SerializeField]
     private GameObject m_PuzzleLibrary = null;
+    [SerializeField]
+    private InputFieldScript m_InputFields;
 
     [SerializeField]
     private GameObject m_PuzzleResultArmory;
@@ -68,6 +70,7 @@ public class GameControllerUI : MonoBehaviour
             case "Llibreria":
                 m_PuzzleResultLibrary.SetActive(true);
                 ChangeTextOnResult(m_PuzzleResultLibrary, Result, false);
+                m_InputFields.Reset();
                 break;
             case "Armeria":
                 break;

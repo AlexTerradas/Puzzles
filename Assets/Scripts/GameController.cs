@@ -109,25 +109,35 @@ public class GameController : MonoBehaviour
 
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Escape))
+        if(Input.GetKeyDown(KeyCode.Escape))
             m_GameControllerUI.GetInGameMenuCanvas().SetActive(true);
 
-        if (m_PaintingOrder.Count == m_PaintingOrderResult.Count)
+        if(m_GameControllerUI.m_CurrentCanvas!=null)
         {
-            if (CheckArraysGameSalaPrincipal())
+            switch (m_GameControllerUI.m_CurrentCanvas.name)
             {
-                m_GameControllerUI.ShowGameWellDone(true);
+                case "CentreSala":
+                    if(m_PaintingOrder.Count==m_PaintingOrderResult.Count)
+                    {
+                        if (CheckArraysGameSalaPrincipal())
+                            m_GameControllerUI.ShowGameWellDone(true);
+                        else
+                        {
+                            m_GameControllerUI.ShowGameWellDone(false);
+                            Reset();
+                        }
+                    }
+                    break;
+                case "Llibreria":
+                    if(m_InputFields.GetWordsObtained()&&!m_InputFields.GetBeaten())
+                    {
+                        m_InputFields.SetBeaten(true);
+                        m_GameControllerUI.ShowGameWellDone(true);
+                    }
+                    break;
+                case "Armeria":
+                    break;
             }
-            else
-            {
-                m_GameControllerUI.ShowGameWellDone(false);
-                Reset();
-            }
-        }
-
-        if (m_InputFields.GetWordsObtained())
-        {
-            m_GameControllerUI.ShowGameWellDone(true);
         }
     }
 }
