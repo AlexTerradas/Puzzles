@@ -91,6 +91,8 @@ public class GameControllerUI : MonoBehaviour
                 }
                 break;
             case "Armeria":
+                m_PuzzleResultArmory.SetActive(true);
+                ChangeTextOnResult(m_PuzzleResultArmory, Result, true);
                 break;
         }
     }
@@ -127,8 +129,8 @@ public class GameControllerUI : MonoBehaviour
 
     public void ChangeToSwordMinigame()
     {
-        m_GameController.ResetSwordRotation();
         SetCurrentCanvas(m_PuzzleArmory);
+        m_GameController.ResetSwordRotation();
     }
 
     // Start && Update

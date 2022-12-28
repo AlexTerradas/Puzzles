@@ -25,7 +25,7 @@ public class InputFieldScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(m_InputField1.textComponent.text.ToLower()=="a")
+        if(m_InputField1.textComponent.text.ToLower()=="poetica")
         {
             m_InputField1.textComponent.color = Color.green;
             m_CorrectWord1=true;
@@ -35,7 +35,7 @@ public class InputFieldScript : MonoBehaviour
             m_InputField1.textComponent.color = Color.red;
             m_CorrectWord1=false;
         }
-        if(m_InputField2.textComponent.text.ToLower()=="a")
+        if(m_InputField2.textComponent.text.ToLower()=="violetes")
         {
             m_InputField2.textComponent.color = Color.green;
             m_CorrectWord2 = true;
@@ -45,7 +45,7 @@ public class InputFieldScript : MonoBehaviour
             m_InputField2.textComponent.color = Color.red;
             m_CorrectWord2 = false;
         }
-        if (m_InputField3.textComponent.text.ToLower() == "a")
+        if (m_InputField3.textComponent.text.ToLower() == "centum")
         {
             m_InputField3.textComponent.color = Color.green;
             m_CorrectWord3 = true;
@@ -55,7 +55,7 @@ public class InputFieldScript : MonoBehaviour
             m_InputField3.textComponent.color = Color.red;
             m_CorrectWord3 = false;
         }
-        if (m_InputField4.textComponent.text.ToLower() == "a")
+        if (m_InputField4.textComponent.text.ToLower() == "sanctus")
         {
             m_InputField4.textComponent.color = Color.green;
             m_CorrectWord4 = true;

@@ -23,27 +23,27 @@ public class GameController : MonoBehaviour
     [SerializeField]
     private List<int> m_PaintingOrderResult = new List<int> { 1, 3, 4, 2 };
 
-    [Header("Logic Paintings")]
+    [Header("Logic Library")]
     [SerializeField]
     private List<int> m_BooksOrder;
 
     [SerializeField]
     private List<int> m_BooksOrderResult = new List<int> { 5, 1, 4, 2 };
 
-    [Header("Logic Library")]
     [SerializeField]
-    private InputFieldScript m_InputFields; 
+    private InputFieldScript m_InputFields;
 
     [Header("Logic Armory")]
     [SerializeField]
-    private List<int> m_PuzzleSwordStart = new List<int>();
+    private List<int> m_PuzzleSwordStart = new List<int> { 0, 315, 45, 180, 180, 0, 180, 180, 0, 180, 180, 225, 145 };
 
     [SerializeField]
     private List<GameObject> m_SwordMinigame;
 
     [SerializeField]
-    private List<int> m_PuzzleSwordCompleted;
+    private List<int> m_PuzzleSwordCompleted = new List<int> { 180, 180, 180, 315, 45, 180, 270, 90, 180, 90, 270, 135, 235 };
 
+    int m_result = 0;
     private void Awake()
     {
         if(m_Instance==null)
@@ -101,6 +101,21 @@ public class GameController : MonoBehaviour
         return l_Result;
     }
 
+    public bool CheckSwordPosition()
+    {
+        bool l_Result = true;
+
+        for(int i = 0; i < m_SwordMinigame.Count; i++)
+        {
+            if (m_SwordMinigame[i].GetComponent<RotateSword>().CheckRotation(m_PuzzleSwordCompleted[i]) == false)
+            {
+                l_Result = false;
+            }
+                
+        }
+        return l_Result;
+    }
+
     public void Reset()
     {
         m_GameWellDone = false;
@@ -118,12 +133,6 @@ public class GameController : MonoBehaviour
 
     public void ResetSwordRotation()
     {
-        if(m_PuzzleSwordStart.Count==0)
-            m_PuzzleSwordStart = new List<int> { 0, 315, 45, 180, 180, 0, 180, 180, 0, 180, 180, 225, 145 };
-
-        Debug.Log("a "+ m_PuzzleSwordStart.Count);
-        Debug.Log("b "+ m_SwordMinigame.Count);
-
         for (int i = 0; i < m_PuzzleSwordStart.Count; i++)
             m_SwordMinigame[i].GetComponent<RectTransform>().eulerAngles = new Vector3(0.0f, 0.0f, m_PuzzleSwordStart[i]);
     }
@@ -134,8 +143,8 @@ public class GameController : MonoBehaviour
         m_GameWellDone = false;
         m_PaintingOrder = new List<int>();
         m_BooksOrder = new List<int>();
-        m_PuzzleSwordCompleted = new List<int>();
-        m_PuzzleSwordStart = new List<int>();
+        m_PuzzleSwordCompleted = new List<int> { 180, 180, 180, 315, 45, 180, 270, 90, 180, 90, 270, 135, 235 };
+        m_PuzzleSwordStart = new List<int> { 0, 315, 45, 180, 180, 0, 180, 180, 0, 180, 180, 225, 145 };
     }
 
     void Update()
@@ -179,6 +188,10 @@ public class GameController : MonoBehaviour
                     }
                     break;
                 case "Armeria":
+                    if (CheckSwordPosition())
+                    {
+                        m_GameControllerUI.ShowGameWellDone(true);
+                    }
                     break;
             }
         }

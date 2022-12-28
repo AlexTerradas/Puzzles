@@ -14,8 +14,13 @@ public class RotateSword : MonoBehaviour
     {
         this.gameObject.GetComponent<RectTransform>().eulerAngles = new Vector3(0.0f, 0.0f, Angle);
 
-        if (this.gameObject.GetComponent<RectTransform>().eulerAngles.z == 360.0f)
+        if (this.gameObject.GetComponent<RectTransform>().eulerAngles.z == 360.0f || this.gameObject.GetComponent<RectTransform>().eulerAngles.z < 0.0f)
             this.gameObject.GetComponent<RectTransform>().eulerAngles = new Vector3(0.0f, 0.0f, 0.0f);
 
+    }
+
+    public bool CheckRotation(float Angle)
+    {
+        return this.gameObject.GetComponent<RectTransform>().eulerAngles.z <= Angle + 1.0f && this.gameObject.GetComponent<RectTransform>().eulerAngles.z >= Angle - 1.0f;
     }
 }
