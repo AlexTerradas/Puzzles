@@ -11,10 +11,8 @@ public class GameController : MonoBehaviour
     GameControllerUI m_GameControllerUI;
 
     [Header("Logic Puzzles")]
-
     [SerializeField]
     private bool m_GameWellDone;
-
     [SerializeField]
     private PlayerMovement m_PlayerMovement;
 
@@ -24,6 +22,10 @@ public class GameController : MonoBehaviour
 
     [SerializeField]
     private List<int> m_PaintingOrderResult = new List<int> { 1, 3, 4, 2 };
+
+    [Header("Logic Library")]
+    [SerializeField]
+    private InputFieldScript m_InputFields; 
 
     [Header("Logic Armory")]
     [SerializeField]
@@ -107,7 +109,7 @@ public class GameController : MonoBehaviour
 
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.P))
+        if (Input.GetKeyDown(KeyCode.Escape))
             m_GameControllerUI.GetInGameMenuCanvas().SetActive(true);
 
         if (m_PaintingOrder.Count == m_PaintingOrderResult.Count)
@@ -121,6 +123,11 @@ public class GameController : MonoBehaviour
                 m_GameControllerUI.ShowGameWellDone(false);
                 Reset();
             }
+        }
+
+        if (m_InputFields.GetWordsObtained())
+        {
+            m_GameControllerUI.ShowGameWellDone(true);
         }
     }
 }
